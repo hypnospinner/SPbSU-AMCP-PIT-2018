@@ -4,7 +4,7 @@
 class Vector
 {
 public:
-	// конструктор по умолчанию
+	// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
 	Vector() {
 		std::cout << " Vector Constructor call" << std::endl;
 		data = new int[1];
@@ -12,7 +12,7 @@ public:
 		capacity = 1;
 	}
 
-	// конструктор
+	// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	Vector(int _size) {
 		std::cout << " Vector Constructor call" << std::endl;
 		if (_size <= 0)
@@ -22,7 +22,7 @@ public:
 		size = 0;
 	}
 
-	// конструктор
+	// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	Vector(int source[], int _size)
 	{
 		std::cout << " Vector Constructor call" << std::endl;
@@ -33,14 +33,14 @@ public:
 			data[i] = source[i];
 	}
 
-	// дестркутор
+	// РґРµСЃС‚СЂРєСѓС‚РѕСЂ
 	~Vector()
 	{
 		std::cout << "Destructor call" << std::endl;
 		delete[] data;
 	}
 
-	// выводим массив
+	// РІС‹РІРѕРґРёРј РјР°СЃСЃРёРІ
 	void print()
 	{
 		for (int i = 0; i < size; i++)
@@ -48,7 +48,7 @@ public:
 		std::cout << std::endl;
 	}
 
-	// добавляем элемент в конец массива
+	// РґРѕР±Р°РІР»СЏРµРј СЌР»РµРјРµРЅС‚ РІ РєРѕРЅРµС† РјР°СЃСЃРёРІР°
 	void push_back(int val)
 	{
 
@@ -66,7 +66,7 @@ public:
 		data = tmp;
 	}
 
-	// получаем последний элемент массива
+	// РїРѕР»СѓС‡Р°РµРј РїРѕСЃР»РµРґРЅРёР№ СЌР»РµРјРµРЅС‚ РјР°СЃСЃРёРІР°
 	int pop_back()
 	{
 		if (size == 0)
@@ -74,7 +74,7 @@ public:
 		return data[--size];
 	}
 
-	// получаем элемент по индексу
+	// РїРѕР»СѓС‡Р°РµРј СЌР»РµРјРµРЅС‚ РїРѕ РёРЅРґРµРєСЃСѓ
 	int& getElemAt(int index)
 	{
 		if (index < 0 || index > size - 1)
@@ -88,9 +88,9 @@ public:
 	}
 
 private:
-	int* data;		// динамический массив с элементами
-	int size;		// количество элементов в массиве
-	int capacity;	// количество места в массиве
+	int* data;		// РґРёРЅР°РјРёС‡РµСЃРєРёР№ РјР°СЃСЃРёРІ СЃ СЌР»РµРјРµРЅС‚Р°РјРё
+	int size;		// РєРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ РІ РјР°СЃСЃРёРІРµ
+	int capacity;	// РєРѕР»РёС‡РµСЃС‚РІРѕ РјРµСЃС‚Р° РІ РјР°СЃСЃРёРІРµ
 };
 
 void testlifecycle() {
@@ -101,21 +101,21 @@ void testlifecycle() {
 
 int main()
 {
-	Vector emptyVector;			// создаем пустой вектор
-	Vector sizedVector(5);		// создаем вектор с инициализированным размером
+	Vector emptyVector;			// СЃРѕР·РґР°РµРј РїСѓСЃС‚РѕР№ РІРµРєС‚РѕСЂ
+	Vector sizedVector(5);		// СЃРѕР·РґР°РµРј РІРµРєС‚РѕСЂ СЃ РёРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°РЅРЅС‹Рј СЂР°Р·РјРµСЂРѕРј
 
 	int* arr = new int[7];
 	for (int i = 0; i < 7; i++)
 		arr[i] = i + 1;
 
-	Vector fullVector(arr, 7);	// создаем и инициализируем все поля вектора
+	Vector fullVector(arr, 7);	// СЃРѕР·РґР°РµРј Рё РёРЅРёС†РёР°Р»РёР·РёСЂСѓРµРј РІСЃРµ РїРѕР»СЏ РІРµРєС‚РѕСЂР°
 
-	// проверяем работу конструктора и дестркутора (время жизни объекта)
+	// РїСЂРѕРІРµСЂСЏРµРј СЂР°Р±РѕС‚Сѓ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР° Рё РґРµСЃС‚СЂРєСѓС‚РѕСЂР° (РІСЂРµРјСЏ Р¶РёР·РЅРё РѕР±СЉРµРєС‚Р°)
 	std::cout << "Starting life cycle test" << std::endl;
 	testlifecycle();
 	std::cout << "Exited life cycle test" << std::endl;
 
-	// выводим вектора
+	// РІС‹РІРѕРґРёРј РІРµРєС‚РѕСЂР°
 	std::cout << "printing empty vector with " << emptyVector.getSize() << " elems :" << std::endl;
 	emptyVector.print();
 
@@ -125,23 +125,23 @@ int main()
 	std::cout << "printing full vector with " << fullVector.getSize() << " elems :" << std::endl;
 	fullVector.print();
 
-	// добавляем элементы
+	// РґРѕР±Р°РІР»СЏРµРј СЌР»РµРјРµРЅС‚С‹
 	for (int i = 0; i < 20; i++)
 		sizedVector.push_back(i + 1);
 
 	std::cout << "printing filled sized vector:" << std::endl;
 	sizedVector.print();
 
-	// получаем последний элемент вектора
+	// РїРѕР»СѓС‡Р°РµРј РїРѕСЃР»РµРґРЅРёР№ СЌР»РµРјРµРЅС‚ РІРµРєС‚РѕСЂР°
 	std::cout << "last element in  fullVector : " << fullVector.pop_back() << std::endl;
 
-	// выведем элементы вектора sizedVector 
-	// (мы напрямую получаем к ним доступ, хотя результат сходен с вызовом метода print())
+	// РІС‹РІРµРґРµРј СЌР»РµРјРµРЅС‚С‹ РІРµРєС‚РѕСЂР° sizedVector 
+	// (РјС‹ РЅР°РїСЂСЏРјСѓСЋ РїРѕР»СѓС‡Р°РµРј Рє РЅРёРј РґРѕСЃС‚СѓРї, С…РѕС‚СЏ СЂРµР·СѓР»СЊС‚Р°С‚ СЃС…РѕРґРµРЅ СЃ РІС‹Р·РѕРІРѕРј РјРµС‚РѕРґР° print())
 	for (int i = 0; i < sizedVector.getSize(); i++)
 		std::cout << sizedVector.getElemAt(i) << " ";
 	std::cout << std::endl;
 
-	// работаем с указателем на вектор
+	// СЂР°Р±РѕС‚Р°РµРј СЃ СѓРєР°Р·Р°С‚РµР»РµРј РЅР° РІРµРєС‚РѕСЂ
 	Vector* vectorPointer = new Vector(4);
 
 	for (int i = 0; i < 4; i++)

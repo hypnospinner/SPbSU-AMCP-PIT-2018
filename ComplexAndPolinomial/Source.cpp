@@ -12,31 +12,29 @@ public:
 	Complex() {
 		real = 0;
 		imag = 0;
-		std::cout << "Creating Complex with Default Constructor\n";
-		print();
+		// std::cout << "Creating Complex with Default Constructor\n";
+		// print();
 	}
 
 	Complex(const Complex& a) {
-		a.print();
-		std::cout << " a adress = " << &a << std::endl;
 		real = a.real; 
 		imag = a.imag;
-		std::cout << "Creating Complex with Copy Constructor\n";
-		print();
+		// std::cout << "Creating Complex with Copy Constructor\n";
+		// print();
 	}
 
 	Complex(double real){
 		this->real = real;
 		this->imag = 0;
-		std::cout << "Creating Complex by converting primitibe data type to Complex\n";
-		print();
+		// std::cout << "Creating Complex by converting primitibe data type to Complex\n";
+		// print();
 	}
 
 	Complex(double real, double imag) {
 		this->real = real;
 		this->imag = imag;
-		std::cout << "Creating Complex with Parametarized Constructor\n";
-		print();
+		// std::cout << "Creating Complex with Parametarized Constructor\n";
+		// print();
 	}
 
 	double Real() const {
@@ -89,7 +87,7 @@ public:
 		return *this;
 	}
 
-	static Complex testMethod() {
+	static Complex staticMethod() {
 		Complex tmp(1, 5);
 		return tmp;
 	}
@@ -143,29 +141,13 @@ public:
 		return coeffs[index];
 	}
 
-	T& operator()(double x) {
-		std::cout << "Calculating function value" << std::endl;
+	T operator()(double x) {
 		T result = 0;
 		T currXdegree = 1;
 		for (int i = 0; i < length; ++i) {
 			result = result + coeffs[i] * currXdegree;
 			currXdegree = currXdegree * (T)x;
 		}
-		std::cout << "Finished calculations" << std::endl;
-		return result;
-	}
-
-	T& calc(double x)
-	{
-		std::cout << "Calculating function value" << std::endl;
-		T result = 0;
-		T currXdegree = 1;
-		for (int i = 0; i < length; ++i) {
-			result = result + coeffs[i] * currXdegree;
-			currXdegree = currXdegree * (T)x;
-		}
-		std::cout << "Finished calculations" << std::endl;
-		std::cout << "Reslult adress = " << &result << std::endl;
 		return result;
 	}
 
@@ -185,7 +167,7 @@ private:
 
 int main()
 {
-	std::cout << "Having fun with Complex Type" << std::endl << std::endl;
+	std::cout << "******** Having fun with Complex Type ********" << std::endl << std::endl;
 	// создаем 2 комплексных числа
 	Complex a(3, 5), b(7, 8);
 
@@ -200,7 +182,7 @@ int main()
 
 	std::cout << std::endl;
 
-	std::cout << "Converting Complex to other types" << std::endl << std::endl;
+	std::cout << "******** Converting Complex to other types ********" << std::endl << std::endl;
 
 	// создаем комплесное число
 	Complex c(3, 2);
@@ -225,7 +207,7 @@ int main()
 	
 	std::cout << std::endl;
 
-	std::cout << "Having fun with Polynom template" << std::endl;
+	std::cout << "******** Having fun with Polynom template ********" << std::endl << std::endl;
 
 	// создаем полином c целочисленными коэффициентами
 	int i_coeffs[2] = { 1, 2 };
@@ -251,10 +233,12 @@ int main()
 	complex_f.print();
 	
 	// вычисляем значение полинома в точке 1
-	Complex C = complex_f.calc(1);
-	std::cout << "complex_f(1) = " << C << std::endl;
+	std::cout << "complex_f(1) = " << complex_f(1) << std::endl;
 
 	std::cout << std::endl;
+
+	std::cout << "Static method result = " << Complex::staticMethod() << std::endl << std::endl;
+
 	system("pause");
 
 	return 0;
